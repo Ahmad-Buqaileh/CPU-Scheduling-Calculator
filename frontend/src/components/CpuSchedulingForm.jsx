@@ -70,7 +70,7 @@ const CpuSchedulingForm = () => {
         console.log("Payload being sent to backend:", payload);
 
         try {
-            const response = await fetch("/api/schedule", {
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/api/schedule`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(payload)
