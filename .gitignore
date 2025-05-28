@@ -1,0 +1,11 @@
+# Ignore frontend build and dependencies
+frontend/node_modules/
+frontend/dist/
+
+# Ignore backend build and IDE files
+backend/target/
+backend/.idea/
+
+# General
+.DS_Store
+*.log
