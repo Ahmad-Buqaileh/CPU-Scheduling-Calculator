@@ -17,7 +17,6 @@ Follow the steps below to run the project locally.
 
 ```
 git clone https://github.com/Ahmad-Buqaileh/CPU-Scheduling-Calculator.git
-cd CPU-Scheduling-Calculator
 ```
 
 ### 2. Run the Backend
