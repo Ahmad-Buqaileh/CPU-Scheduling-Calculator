@@ -32,5 +32,4 @@ cd backend
 npm install
 npm run dev
 ```
----------------------------------------------------------
-## Frontend: https://cpu-scheduling-calculator.vercel.app
+
