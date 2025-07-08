@@ -44,11 +44,15 @@ public class PrioritySchedulingPreemptiveAlgorithm implements AlgorithmStrategy 
                     .toList();
 
             if (arrivedProcesses.isEmpty()) {
-                ganttChart.add(new GanttChartEntry(currentTime, 0, currentTime + 1));
+                if (!ganttChart.isEmpty() && ganttChart.getLast().getPid() == 0) {
+                    GanttChartEntry previousGanttChart = ganttChart.removeLast();
+                    ganttChart.add(new GanttChartEntry(previousGanttChart.getStart(), 0, currentTime + 1));
+                } else {
+                    ganttChart.add(new GanttChartEntry(currentTime, 0, currentTime + 1));
+                }
                 currentTime++;
                 continue;
             }
-
             ProcessDTO process = arrivedProcesses.get(0);
             int pid = process.getPid();
 

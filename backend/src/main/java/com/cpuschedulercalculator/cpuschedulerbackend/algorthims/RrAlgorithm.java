@@ -37,7 +37,12 @@ public class RrAlgorithm implements AlgorithmStrategy {
             }
 
             if (ready.isEmpty()) {
-                ganttChart.add(new GanttChartEntry(currentTime, 0, currentTime + 1));
+                if (!ganttChart.isEmpty() && ganttChart.getLast().getPid() == 0) {
+                    GanttChartEntry previousGanttChart = ganttChart.removeLast();
+                    ganttChart.add(new GanttChartEntry(previousGanttChart.getStart(), 0, currentTime + 1));
+                } else {
+                    ganttChart.add(new GanttChartEntry(currentTime, 0, currentTime + 1));
+                }
                 currentTime++;
                 continue;
             }
