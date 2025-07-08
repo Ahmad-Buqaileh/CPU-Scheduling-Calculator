@@ -10,13 +10,14 @@ Follow the steps below to run the project locally.
 
 - Java 21
 - Node.js (v16+ recommended)
-- npm 
+- npm
+- maven 
 - Git
 
 ### 1. Clone the Repository
 
 ```
-git clone https://github.com/Ahmad-Buqaileh/CPU-Scheduling-Calculator.git
+git clone "https://github.com/Ahmad-Buqaileh/CPU-Scheduling-Calculator.git"
 ```
 
 ### 2. Run the Backend
