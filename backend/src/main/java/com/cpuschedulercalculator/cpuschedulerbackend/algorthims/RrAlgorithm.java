@@ -26,7 +26,6 @@ public class RrAlgorithm implements AlgorithmStrategy {
         }
 
         while (!temp.isEmpty() || !ready.isEmpty()) {
-
             Iterator<ProcessDTO> iterator = temp.iterator();
             while (iterator.hasNext()) {
                 ProcessDTO process = iterator.next();
