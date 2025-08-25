@@ -40,7 +40,6 @@ public class PrioritySchedulingPreemptiveAlgorithm implements AlgorithmStrategy 
 
                         return Integer.compare(p1.getArrivalTime(), p2.getArrivalTime());
                     })
-
                     .toList();
 
             if (arrivedProcesses.isEmpty()) {
@@ -53,7 +52,8 @@ public class PrioritySchedulingPreemptiveAlgorithm implements AlgorithmStrategy 
                 currentTime++;
                 continue;
             }
-            ProcessDTO process = arrivedProcesses.get(0);
+
+            ProcessDTO process = arrivedProcesses.getFirst();
             int pid = process.getPid();
 
             if (!Objects.equals(pid, previousPid)) {

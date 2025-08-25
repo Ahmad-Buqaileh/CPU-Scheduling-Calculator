@@ -48,7 +48,7 @@ public class SrtfAlgorithm implements AlgorithmStrategy {
                 ganttChart.add(new GanttChartEntry(currentTime, pid, currentTime + 1));
             } else {
                 GanttChartEntry previousChart = ganttChart.removeLast();
-                ganttChart.add(new GanttChartEntry(previousChart.getStart(),pid, currentTime + 1));
+                ganttChart.add(new GanttChartEntry(previousChart.getStart(), pid, currentTime + 1));
             }
 
             remaining.put(pid, remaining.get(pid) - 1);

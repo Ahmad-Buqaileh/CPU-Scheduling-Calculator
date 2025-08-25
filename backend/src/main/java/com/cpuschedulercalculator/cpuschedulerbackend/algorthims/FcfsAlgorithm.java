@@ -3,6 +3,7 @@ package com.cpuschedulercalculator.cpuschedulerbackend.algorthims;
 import com.cpuschedulercalculator.cpuschedulerbackend.dto.GanttChartEntry;
 import com.cpuschedulercalculator.cpuschedulerbackend.dto.ProcessDTO;
 import com.cpuschedulercalculator.cpuschedulerbackend.dto.ScheduleResponse;
+import com.cpuschedulercalculator.cpuschedulerbackend.utility.SchedulingUtils;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -28,19 +29,9 @@ public class FcfsAlgorithm implements AlgorithmStrategy {
                 currentTime = idleEnd;
             }
 
-            int start = currentTime;
-            int wait = start - process.getArrivalTime();
-            int end = start + process.getBurstTime();
-            int turnaround = end - process.getArrivalTime();
-
-            process.setWaitingTime(wait);
-            process.setTurnaroundTime(turnaround);
-
-            ganttChart.add(new GanttChartEntry(start, process.getPid(), end));
-
-            currentTime = end;
-            totalWait += wait;
-            totalTurnAround += turnaround;
+            currentTime = SchedulingUtils.calculateProcessInfo(process,currentTime,ganttChart);
+            totalWait += process.getWaitingTime();
+            totalTurnAround += process.getTurnaroundTime();
         }
 
         return new ScheduleResponse(

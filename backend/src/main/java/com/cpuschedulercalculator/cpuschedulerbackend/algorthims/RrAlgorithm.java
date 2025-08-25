@@ -71,7 +71,6 @@ public class RrAlgorithm implements AlgorithmStrategy {
             }
 
             if (burstTime == 0) {
-
                 int turnAround = currentTime - process.getArrivalTime();
                 int wait = turnAround - process.getBurstTime();
                 process.setTurnaroundTime(turnAround);
@@ -85,7 +84,6 @@ public class RrAlgorithm implements AlgorithmStrategy {
             } else {
                 ready.offer(process);
             }
-
         }
 
         return new ScheduleResponse(
