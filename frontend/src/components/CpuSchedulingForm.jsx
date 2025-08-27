@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
-import '../styles/cpu_scheduling_form.css';
+
+import { useState } from 'react';
 import AlgorithmSelector from './AlgorithmSelector';
 import ProcessTable from './ProcessTable';
 import { QuantumInput } from './QuantumInput';
-import InputTableDisplay from './InputTableDisplay'
+import InputTableDisplay from './InputTableDisplay';
 import SubmitBTN from './SubmitBTN';
 import Results from './Results';
 import GanttChart from './GanttChart';
@@ -20,8 +20,8 @@ const CpuSchedulingForm = () => {
     const handleAlgo = (e) => {
         const selectedAlgo = e.target.value;
         setAlgo(selectedAlgo);
-        setShowPriority(selectedAlgo === 'PriorityScheduling' || selectedAlgo == 'PrioritySchedulingPreemptive');
-        setShowQuantum(selectedAlgo === 'RR')
+        setShowPriority(selectedAlgo === 'PriorityScheduling' || selectedAlgo === 'PrioritySchedulingPreemptive');
+        setShowQuantum(selectedAlgo === 'RR');
     };
 
     const handleQuantum = (e) => {
@@ -67,8 +67,6 @@ const CpuSchedulingForm = () => {
             }))
         };
 
-        console.log("Payload being sent to backend:", payload);
-
         try {
             const response = await fetch(`${import.meta.env.VITE_API_URL}/api/schedule`, {
                 method: 'POST',
@@ -88,25 +86,33 @@ const CpuSchedulingForm = () => {
         }
     };
 
-
     return (
-        <div className="container">
-            <form className="form" onSubmit={handleSubmit}>
+        <div className="flex flex-row justify-center my-10 px-4">
+            <form className="w-full max-w-6xl gap-6" onSubmit={handleSubmit}>
+                <div className='grid sm:grid-cols-1 md:grid-cols-2 gap-10 w-full'>
+                    <div className="bg-[#1e1e1e] shadow-xl p-5 rounded flex-1 flex flex-col gap-4 h-97">
+                        <h1 className="text-white text-4xl font-medium mb-4">Input</h1>
+                        <AlgorithmSelector handleAlgo={handleAlgo} algo={algo} />
+                        <ProcessTable handleProcessCount={handleProcessCount} />
+                        <QuantumInput handleQuantum={handleQuantum} showQuantum={showQuantum} />
+                        <SubmitBTN processCount={processCount} />
+                    </div>
 
-                <AlgorithmSelector handleAlgo={handleAlgo} algo={algo} />
-
-                <ProcessTable handleProcessCount={handleProcessCount} />
-
-                <QuantumInput handleQuantum={handleQuantum} showQuantum={showQuantum} />
-
-                <InputTableDisplay handleProcessChange={handleProcessChange} processCount={processCount}
-                    showPriority={showPriority} processes={processes} />
-
-                <SubmitBTN processCount={processCount} />
-
-                <Results showResponse={showResponse} showPriority={showPriority} />
-
-                <GanttChart showResponse={showResponse} />
+                    <div className="bg-[#1e1e1e] shadow-xl p-5 rounded flex-1">
+                        <h1 className="text-white text-4xl font-medium mb-7">Processes Input</h1>
+                        <InputTableDisplay
+                            handleProcessChange={handleProcessChange}
+                            processCount={processCount}
+                            showPriority={showPriority}
+                            processes={processes}
+                        />
+                    </div>
+                </div>
+                <div className='bg-[#1e1e1e] p-5 mt-5 rounded shadow-xl'>
+                    <h1 className="text-white text-4xl font-medium mb-7">Output</h1>
+                    <GanttChart showResponse={showResponse} />
+                    <Results showResponse={showResponse} showPriority={showPriority} />
+                </div>
             </form>
         </div>
     );
