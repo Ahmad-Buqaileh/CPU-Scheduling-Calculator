@@ -17,6 +17,7 @@ const CpuSchedulingForm = () => {
     const [showPriority, setShowPriority] = useState(false);
     const [showQuantum, setShowQuantum] = useState(false);
     const [showResponse, setShowResponse] = useState([]);
+    const [isFull, setIsFull] = useState(true);
     const [loading, setLoading] = useState(false);
 
     const handleAlgo = (e) => {
@@ -52,25 +53,48 @@ const CpuSchedulingForm = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-
+        setIsFull(true);
         setLoading(true);
-        if (!algo) {
-            alert("Please select a scheduling algorithm.");
-            return;
-        }
-
-        const payload = {
-            algorithm: algo,
-            quantum: algo === 'RR' ? quantumTime : null,
-            processes: processes.map(process => ({
-                pid: process.pid,
-                arrivalTime: parseInt(process.arrivalTime),
-                burstTime: parseInt(process.burstTime),
-                priority: process.priority ? parseInt(process.priority) : null
-            }))
-        };
-
         try {
+            if (!algo) {
+                alert("Please select a scheduling algorithm.");
+                return;
+            }
+
+            for (let i = 0; i < processes.length; i++) {
+                const process = processes[i];
+                console.log(algo)
+                if (process.arrivalTime === "" || process.burstTime === "") {
+                    setIsFull(false);
+                    break;
+                }
+
+                if ((algo === "PrioritySchedulingPreemptive" || algo === "PriorityScheduling")
+                    && (process.priority === '' || process.priority == null)) {
+                    setIsFull(false);
+                    break;
+                }
+            }
+            if (!isFull) {
+                alert("Please enter all of the required process info.");
+                return;
+            }
+            if (algo === "RR" && quantumTime === "") {
+                alert("Please enter the quantum time.");
+                return;
+            }
+
+            const payload = {
+                algorithm: algo,
+                quantum: algo === 'RR' ? quantumTime : null,
+                processes: processes.map(process => ({
+                    pid: process.pid,
+                    arrivalTime: parseInt(process.arrivalTime),
+                    burstTime: parseInt(process.burstTime),
+                    priority: process.priority ? parseInt(process.priority) : null
+                }))
+            };
+
             const response = await fetch(`${import.meta.env.VITE_API_URL}/api/schedule`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
@@ -84,9 +108,7 @@ const CpuSchedulingForm = () => {
             const result = await response.json();
             setShowResponse(result);
         } catch (err) {
-            setLoading(false);
-            console.error("Scheduling error:", err);
-            alert("Something went wrong.");
+            alert(err);
         } finally {
             setLoading(false);
         }

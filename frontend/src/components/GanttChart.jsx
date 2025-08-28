@@ -24,4 +24,4 @@ const GanttChart = ({ showResponse }) => {
   );
 };
 
-export default GanttChart;
+export default GanttChart

@@ -31,4 +31,4 @@ const ProcessTable = ({ handleProcessCount }) => {
     );
 };
 
-export default ProcessTable;
+export default ProcessTable
