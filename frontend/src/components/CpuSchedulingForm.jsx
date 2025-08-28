@@ -18,7 +18,7 @@ const CpuSchedulingForm = () => {
     const [showQuantum, setShowQuantum] = useState(false);
     const [showResponse, setShowResponse] = useState([]);
     const [isFull, setIsFull] = useState(true);
-    const [loading, setLoading] = useState(false);
+    const [loading, setLoading] = useState(true);
 
     const handleAlgo = (e) => {
         const selectedAlgo = e.target.value;
