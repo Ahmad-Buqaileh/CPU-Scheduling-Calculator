@@ -1,8 +1,8 @@
 package com.cpuschedulercalculator.cpuschedulerbackend.service;
 
-import com.cpuschedulercalculator.cpuschedulerbackend.algorthims.*;
 import com.cpuschedulercalculator.cpuschedulerbackend.dto.ScheduleRequest;
 import com.cpuschedulercalculator.cpuschedulerbackend.dto.ScheduleResponse;
+import com.cpuschedulercalculator.cpuschedulerbackend.service.algorthims.*;
 import org.springframework.stereotype.Service;
 
 import java.util.Map;
@@ -11,12 +11,12 @@ import java.util.Map;
 public class SchedulingServiceImpl implements SchedulingService {
 
     private final Map<String, AlgorithmStrategy> strategies = Map.of(
-            "FCFS", new FcfsAlgorithm(),
-            "SJF", new SjfAlgorithm(),
-            "SRTF", new SrtfAlgorithm(),
+            "FCFS", new FirstComeFirstServeAlgorithm(),
+            "SJF", new ShortestJobFirstAlgorithm(),
+            "SRTF", new ShortestRemainingTimeFirstAlgorithm(),
             "PRIORITYSCHEDULING", new PrioritySchedulingAlgorithm(),
             "PRIORITYSCHEDULINGPREEMPTIVE", new PrioritySchedulingPreemptiveAlgorithm(),
-            "RR", new RrAlgorithm()
+            "RR", new RoundRobinAlgorithm()
     );
 
     @Override

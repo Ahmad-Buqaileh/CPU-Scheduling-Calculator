@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
-public class FcfsAlgorithm implements AlgorithmStrategy {
+public class FirstComeFirstServeAlgorithm implements AlgorithmStrategy {
 
     @Override
     public ScheduleResponse calculate(List<ProcessDTO> processes, Integer quantum) {

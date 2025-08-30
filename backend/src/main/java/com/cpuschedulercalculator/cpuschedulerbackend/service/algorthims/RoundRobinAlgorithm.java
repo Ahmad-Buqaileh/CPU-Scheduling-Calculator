@@ -6,7 +6,7 @@ import com.cpuschedulercalculator.cpuschedulerbackend.dto.ScheduleResponse;
 
 import java.util.*;
 
-public class RrAlgorithm implements AlgorithmStrategy {
+public class RoundRobinAlgorithm implements AlgorithmStrategy {
 
     @Override
     public ScheduleResponse calculate(List<ProcessDTO> processes, Integer quantum) {

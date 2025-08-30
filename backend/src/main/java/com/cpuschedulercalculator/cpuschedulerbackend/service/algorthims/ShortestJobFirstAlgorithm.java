@@ -1,4 +1,4 @@
-package com.cpuschedulercalculator.cpuschedulerbackend.algorthims;
+package com.cpuschedulercalculator.cpuschedulerbackend.service.algorthims;
 
 import com.cpuschedulercalculator.cpuschedulerbackend.dto.GanttChartEntry;
 import com.cpuschedulercalculator.cpuschedulerbackend.dto.ProcessDTO;
@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
-public class SjfAlgorithm implements AlgorithmStrategy {
+public class ShortestJobFirstAlgorithm implements AlgorithmStrategy {
 
     @Override
     public ScheduleResponse calculate(List<ProcessDTO> processes, Integer quantum) {
