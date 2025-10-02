@@ -27,7 +27,7 @@ const Loading = () => {
     return (
         <div className="fixed flex flex-col items-center justify-center inset-0 bg-black/60 z-10">
             {isOverTheTime && (
-                <p className="absolute top-30 left-1/2 -translate-x-1/2 text-white text-3xl font-bold">
+                <p className="absolute top-30 left-1/2 -translate-x-1/2 text-white lg:text-3xl font-bold">
                     {messages[index]}
                 </p>
             )}
