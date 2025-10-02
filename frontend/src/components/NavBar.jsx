@@ -18,8 +18,8 @@ function NavBar() {
     }, [isDarkMode])
 
     return (
-        <div className="flex flex-row justify-between items-center py-4 px-10 shadow-lg">
-            <h1 className="text-2xl font-bold">CPU Scheduling Algorithm Calculator</h1>
+        <div className="flex flex-row gap-1 justify-between items-center py-4 px-10 shadow-lg">
+            <h1 className="lg:text-2xl font-bold">CPU Scheduling Algorithm Calculator</h1>
             <div className="flex flex-row border-1 border-[#ced4da] rounded-xl dark:border-0 dark:bg-white/6">
                 <button
                     className="flex items-center py-2 px-4 cursor-pointer"
