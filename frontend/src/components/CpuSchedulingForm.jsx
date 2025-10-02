@@ -98,7 +98,7 @@ const CpuSchedulingForm = () => {
                             <QuantumInput setQuantumTime={setQuantumTime} showQuantum={showQuantum} />
                             <button
                                 type="submit"
-                                className="w-full sm:w-auto py-2 sm:py-3 px-4 sm:px-6 bg-[#1F96FF] text-base sm:text-xl text-white font-bold rounded-2xl cursor-pointer dark:bg-white/6 mt-2 transition-all duration-200"
+                                className="w-full sm:w-auto py-2 sm:py-3 px-4 sm:px-6 bg-[#1F96FF] text-base sm:text-xl text-white font-bold rounded-2xl cursor-pointer dark:bg-white/6 mt-2"
                             >
                                 Calculate
                             </button>
