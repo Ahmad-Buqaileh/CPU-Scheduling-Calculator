@@ -1,13 +1,12 @@
-
 const AlgorithmSelector = ({ handleAlgo, algo }) => {
     return (
-        <div className="flex flex-col mb-4">
-            <label htmlFor="algorithm" className="font-semibold mb-2 text-white">
+        <div className="flex flex-col">
+            <label htmlFor="algorithm" className="font-semibold mb-2">
                 Choose the type of Scheduling:
             </label>
             <select
                 id="algorithm"
-                className="p-2 h-12 border border-[#444] rounded-md bg-[#2c2c2c] text-white focus:outline-none focus:border-[#888] focus:ring-2 focus:ring-white"
+                className="p-2 h-12 font-semibold border-1 border-[#ced4da] rounded-md dark:bg-white/6 dark:border-0"
                 value={algo}
                 onChange={handleAlgo}>
                 <option value="" className="text-lg">-- Select an Algorithm --</option>
@@ -22,4 +21,4 @@ const AlgorithmSelector = ({ handleAlgo, algo }) => {
     )
 }
 
-export default AlgorithmSelector
+export default AlgorithmSelector;

@@ -1,9 +1,6 @@
 @import "tailwindcss";
 
-body {
-  background-color: rgb(32, 32, 32);
-  font-family: Arial, Helvetica, sans-serif;
-}
+@custom-variant dark (&:where(.dark, .dark *));
 
 input[type=number]::-webkit-inner-spin-button,
 input[type=number]::-webkit-outer-spin-button {
@@ -13,4 +10,14 @@ input[type=number]::-webkit-outer-spin-button {
 
 input[type=number] {
   -moz-appearance: textfield;
+}
+
+body {
+  background-color: white;
+  color: black;
+}
+
+body.dark {
+  background-color: #101828;
+  color: white;
 }

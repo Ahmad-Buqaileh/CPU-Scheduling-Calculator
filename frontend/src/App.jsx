@@ -1,11 +1,11 @@
-import CpuSchedulingForm from "./components/CpuSchedulingForm"
+import HomePage from "./pages/HomePage"
+
 function App() {
 
   return (
     <>
-      <CpuSchedulingForm />
+      <HomePage />
     </>
   )
 }
-
-export default App
+export default App;
